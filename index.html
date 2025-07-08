@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rawomania</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+        .screen {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+        }
+        .right-image {
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .content-grid {
+            position: relative;
+            z-index: 2;
+            margin: 4em;
+            margin-top: 8em;
+            height: calc(100vh - 8em);
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto 1fr;
+            gap: 20px;            
+        }
+        .heading-area {
+            grid-column: 1 / 8;
+        }
+        .text-area {
+            grid-column: 2 / 9;
+        }
+        @media (max-width: 768px) {
+            .screen {
+                height: 100vh;
+            }
+            .right-image {
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                right: 0;
+                left: auto;
+                width: 80%;
+                height: 60vh;
+                object-fit: cover;
+                z-index: 1;
+                opacity: 0.3;
+            }
+            .content-grid {
+                margin: 2em;
+                margin-top: 6em;
+                height: auto;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                position: relative;
+                z-index: 2;
+            }
+            .heading-area,
+            .text-area {
+                grid-column: 1;
+            }
+        }
+        .menu-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-overlay.active {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center backdrop-blur-md md:px-[4em] md:py-[1em] px-[2em] py-[1em]">
+        <img src="img/logo-rawomania.svg" alt="Rawomania Logo" class="h-8 transition-all duration-300 opacity-0" id="logo">
+        <button id="menuBtn" class="text-3xl">☰</button>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div id="menuOverlay" class="menu-overlay fixed top-0 right-0 h-screen w-64 bg-white shadow-lg z-50 p-8">
+        <button id="closeBtn" class="absolute top-4 right-4 text-2xl">×</button>
+        <ul class="mt-12 space-y-4">
+            <li><a href="#screen1" class="text-xl hover:text-green-600">Home</a></li>
+            <li><a href="#screen2" class="text-xl hover:text-green-600">Welcome</a></li>
+            <li><a href="#screen3" class="text-xl hover:text-green-600">Exhibitors</a></li>
+        </ul>
+    </div>
+
+    <!-- Screen 1 -->
+    <section id="screen1" class="screen">
+        <img src="img/1bkg.png" alt="Background 1" class="absolute inset-0 w-full h-full object-cover">
+        <img src="img/1right.png" alt="Right Image 1" class="right-image" style="opacity: 1;">
+        <div class="content-grid">
+            <div class="col-span-7">
+                <img src="img/logo-rawomania.svg" alt="Rawomania Logo" class="w-5/12 mb-12">
+                <h1 class="text-[3em] md:text-[4em] text-[2em] font-bold mb-6">The First Natural Wine Event of Romania</h1>
+                <p class="text-[1em] md:text-[2em]">November 1st, 2025 | CdRF, 68 Popa Tatu St.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screen 2 -->
+    <section id="screen2" class="screen">
+        <img src="img/2bkg.png" alt="Background 2" class="absolute inset-0 w-full h-full object-cover">
+        <img src="img/2right.png" alt="Right Image 2" class="right-image">
+        <div class="content-grid">
+            <div class="col-span-7 space-y-6">
+                <h1 class="text-[3em] font-bold">Welcome to RAWomania</h1>
+                <p class="text-xl">A bold, joyful, and soulful gathering.</p>
+                <p class="text-lg">A one-day event in the heart of Bucharest where the raw, the real, and the beautifully imperfect come together in a celebration of living wines.</p>
+                <p class="text-xl italic">Think of it as a collective inhale.</p>
+                <p class="text-lg">Curious drinkers meet daring winemakers, stories are told across tables, and wines express origin, care, chaos in just the right balance.</p>
+                <p class="text-lg">Whether you've been part of this movement for decades or you're showing your first bottled daydreams, RAWomania is a space made for encounters.</p>
+                <div class="flex gap-4 mt-8">
+                    <button class="px-6 py-3 border-2 border-[#47b549] text-[#47b549] rounded-lg hover:bg-[#47b549] hover:text-white transition-colors">Apply as Exhibitor</button>
+                    <button class="px-6 py-3 border-2 border-[#47b549] text-[#47b549] rounded-lg hover:bg-[#47b549] hover:text-white transition-colors">Become a Partner</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screen 3 -->
+    <section id="screen3" class="screen bg-[#47b549]">
+        <img src="img/3right.png" alt="Right Image 3" class="right-image">
+        <div class="content-grid">
+            <div class="col-span-7 text-black space-y-6">
+                <h1 class="text-[3em] font-bold">EXHIBITORS</h1>
+                <h2 class="text-2xl font-semibold">Interested in Exhibiting?</h2>
+                <p class="text-lg">RAWomania is a space for wines that speak — of soil, of care, of the wild and the wonderful.</p>
+                <p class="text-lg">We're inviting a curated group of producers from across Europe and beyond.</p>
+                <div class="space-y-4 mt-6">
+                    <p class="text-lg">🍇 Show your wines to a growing audience of importers, sommeliers, creators, and wine lovers.</p>
+                    <p class="text-lg">🥂 Connect, taste, and be part of a movement with purpose and pleasure.</p>
+                </div>
+                <a href="#" class="inline-block text-lg hover:underline">→ Read the Exhibitor Invitation PDF</a>
+                <div class="mt-8">
+                    <p class="text-lg">For more details or to apply, please do contact:</p>
+                    <p class="text-lg mt-2">📧 dragos@rawomania.ro</p>
+                    <p class="text-lg">📞 +40 766 643 192</p>
+                </div>
+            </div>
+        </div>
+    <!-- Screen 3 content ends here -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="bottom-0 left-0 right-0 bg-black py-4 px-6 flex justify-between items-center z-50 shadow-lg">
+        <div class="text-sm text-white">
+            © 2025 RAWomania. All rights reserved.
+        </div>
+        <a href="#" class="bg-[#47b549] text-white px-4 py-2 rounded-full hover:bg-[#3a9e3c] transition-colors" title="Back to top">TOP ↑</a>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const logo = document.getElementById('logo');
+
+        // Initialize logo opacity to 0
+        logo.style.opacity = '0';
+
+        // Handle scroll event for logo opacity
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const maxScroll = window.innerHeight * 0.3; // 30% of viewport height
+            const opacity = Math.min(scrollPosition / maxScroll, 1);
+            logo.style.opacity = opacity.toString();
+        });
+
+        // Menu toggle functionality
+        menuBtn.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#menuOverlay a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for the top button
+        document.querySelector('footer a').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
