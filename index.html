@@ -51,7 +51,8 @@
         }
         @media (max-width: 768px) {
             .screen {
-                height: 100vh;
+                min-height: 100vh;
+                height: auto;
             }
             .right-image {
                 position: absolute;
@@ -68,6 +69,8 @@
             .content-grid {
                 margin: 2em;
                 margin-top: 6em;
+                margin-bottom: 4em;
+                min-height: 100vh;
                 height: auto;
                 grid-template-columns: 1fr;
                 grid-template-rows: auto;
